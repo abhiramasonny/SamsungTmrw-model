@@ -195,3 +195,16 @@ f_imp = rf2.feature_importances_
 for i,v in enumerate(f_imp):
     print('Feature: %s, Score: %.5f' % (names1[i],v))
 print("-----------------------------------------------")
+knc =  KNeighborsClassifier()
+knc.fit(x_train,y_train)
+
+y_pred_knc = knc.predict(x_test)
+
+print("Accuracy of K-Neighbours classifier :: ", metrics.accuracy_score(y_test,y_pred_knc))
+#Models and their accuracy
+
+print("*****************Models and their accuracy*****************")
+print("Logistic Regression Classifier :: ", metrics.accuracy_score(y_test,y_pred_logReg1))
+print("Decision Tree :: ", metrics.accuracy_score(y_test,y_pred_dt1))
+print("Random Forest Classifier :: ", metrics.accuracy_score(y_test, y_pred_rf))
+print("K Neighbours Classifier :: ", metrics.accuracy_score(y_test,y_pred_knc))
