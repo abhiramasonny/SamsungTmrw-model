@@ -31,7 +31,6 @@ IQR = Q3 - Q1
 data2 = data1[~((data1 < (Q1 - 1.5 * IQR)) | (data1 > (Q3 + 1.5 * IQR))).any(axis=1)]
 z = np.abs(stats.zscore(data1))
 data3 = data1[(z < 3).all(axis=1)]
-
 # Finding the correlation
 pearsonCorr = data3.corr(method='pearson')
 spearmanCorr = data3.corr(method='spearman')
@@ -43,9 +42,7 @@ plt.title("Pearson Correlation")
 fig = plt.subplots(figsize=(14, 8))
 sns.heatmap(spearmanCorr, vmin=-1, vmax=1, cmap="Blues", annot=True, linewidth=0.1)
 plt.title("Spearman Correlation")
-
-plt.show()
-
+#plt.show()
 # Create mask for both correlation matrices
 
 # Pearson corr masking
@@ -63,7 +60,7 @@ fig = plt.subplots(figsize=(14, 8))
 sns.heatmap(pCorr, vmin=-1, vmax=1, cmap=cmap, annot=True, linewidth=0.3, mask=maskP)
 plt.title("Pearson Correlation")
 
-plt.show()
+#plt.show()
 
 x = data3.drop("output", axis=1)
 y = data3["output"]
@@ -150,11 +147,3 @@ print("K Neighbours Classifier:", metrics.accuracy_score(y_test, y_pred_knc))
 
 torch.save(rf2, 'heart_model.pt')
 print("Heart model saved as heart_model.pt")
-
-# Load the model from the saved .pt file
-loaded_model = torch.load('heart_model.pt')
-print("Heart model loaded from heart_model.pt")
-
-# Generate predictions using the loaded model
-y_pred_loaded_model = loaded_model.predict(x_test_rf2)
-print("Accuracy of Loaded Model:", metrics.accuracy_score(y_test, y_pred_loaded_model))
