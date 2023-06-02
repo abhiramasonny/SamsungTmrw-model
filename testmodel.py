@@ -33,9 +33,9 @@ target : 0= less chance of heart attack 1= more chance of heart attack
 
 """
 data_test = {
-    'age': 55,
-    'sex': 1,
-    'cp': 2,
+    'age': 13,
+    'sex': 0,
+    'cp': 0,
     'trtbps': 130,
     'chol': 250,
     'restecg': 0,
@@ -46,7 +46,17 @@ data_test = {
     'caa': 0,
     'thall': 2
 }
-
+data_test2 = {
+    'age': 13,
+    'sex': 0,
+    'cp': 0,
+    'trtbps': 130,
+    'chol': 250,
+    'restecg': 0,
+    'thalachh': 150,
+    'exng': 0,
+    'oldpeak': 2.5,
+}
 # Convert the dictionary to a DataFrame
 df_test = pd.DataFrame(data_test, index=[0])
 
